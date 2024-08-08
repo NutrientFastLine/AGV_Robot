@@ -1,0 +1,18 @@
+<launch>
+    <!--robot bast type use different tf value-->
+    <arg name="base_type"       default="$(env BASE_TYPE)" />
+    <!-- robot frame -->
+    <arg name="base_frame"       default="base_footprint" />    
+    <arg name="camera_type"       default="$(env CAMERA_TYPE)" />   
+    <arg name="camera_frame" default="camera_link"/>  
+
+    <include file="$(find astra_camera)/launch/$(arg camera_type).launch"/>
+
+    <group if="$(eval camera_type == 'astrapro')">
+        <group if="$(eval base_type == 'TWNCar_Pro')">
+            <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_camera"
+                args="0.230 0.0 0.29 0.0 0.0 0.0 $(arg base_frame) $(arg camera_frame) 20">
+            </node>
+        </group>
+    </group>
+</launch>  

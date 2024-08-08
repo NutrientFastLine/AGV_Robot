@@ -1,0 +1,7 @@
+<launch>
+       <include file="$(find base_control)/launch/base_control.launch"/>
+       <include file="$(find rplidar_ros)/launch/rplidar_a2m12.launch"/>
+       <include file="$(find robot_vslam)/launch/camera.launch"/>
+       <include file="$(find robot_navigation)/launch/amcl.launch"/>
+       <include file="$(find robot_navigation)/launch/robot_navigation.launch"/>
+</launch>

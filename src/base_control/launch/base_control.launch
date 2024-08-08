@@ -1,0 +1,6 @@
+<launch>
+    <include file="$(find handsfree_ros_imu)/launch/handsfree_imu.launch" />
+    <node pkg="base_control" type="DS2024_motor_driver_node" name="DS2024_motor_driver_node" output="screen"/> 
+    <include file="$(find robot_pose_ekf)/robot_pose_ekf.launch" />
+    <node pkg="tf" type="static_transform_publisher" name="base_link_base_footprint_broadcaster" args="0 0 0.0 0 0 0 base_link base_footprint 100" />
+</launch>
